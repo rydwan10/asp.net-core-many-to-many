@@ -14,6 +14,12 @@ namespace ManyToMany.Models
         [Required]
         [MaxLength(225)]
         public string Title { get; set; }
+
+        [Required]
+        [MaxLength(225)]
+        public string Genre { get; set; }
+
+        public List<BookAuthor> BookAuthors { get; set; }
        
     }
 }

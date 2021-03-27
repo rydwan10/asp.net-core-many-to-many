@@ -29,12 +29,15 @@ namespace ManyToMany
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ManyToMany", Version = "v1" });
             });
-            services.AddDbContext<SmartphoneContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BookDBConnection")));
+            services.AddDbContext<BookContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BookDBConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

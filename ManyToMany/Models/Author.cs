@@ -6,18 +6,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ManyToMany.Models
 {
-    public class Course
+    public class Author
     {
         [Key]
         public int Id { get; set; }
 
         [MaxLength(225)]
         [Required]
-        public string CourseName { get; set; }
+        public string Name { get; set; }
 
-        [MaxLength(225)]
-        [Required]
-        public string Description { get; set; }
+        public List<BookAuthor> BookAuthors { get; set; }
 
     }
 }
